@@ -2,7 +2,14 @@
 
 ## Goal 
 
-This is an early stage project that will enable users to track the total value of their OHM token holdings from the point of inception (roughly march 2021) to the current moment in time. Balances over time were computed using on chain data and API's while prices come from the coingecko API. 
+The goal of this project is to provide holders of the OHM token and its derivatives a convenient way to see how their investment has performed over time. This will be accomplished by producing a visualization of OHM token portfolio value and cumulative amount invested (cost basis) over time. 
+
+Currently, there is no widely available tool that allows users to do this. This is a complex task as the OHM ecosystem has changed a lot since inception: 
+- New token types have been introduced (and old ones deprecated)
+- Updates to underlying infrastructure (contracts that perform staking / bonding logic)
+- Migrations
+
+This is a work in progress. My current focus is on getting an accurate visualization of portfolio value over time and after I have completed this, I'm going to work on integrating information about investment cost basis.
 
 ![demo-gif](./ohm-demo.gif)
 
