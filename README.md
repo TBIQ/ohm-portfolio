@@ -17,7 +17,7 @@ This is a work in progress. My current focus is on getting an accurate visualiza
 
 This app tracks OHM, gOHM, sOHM, wsOHM balances. Whenever I say "OHM tokens" I am referencing these 4 tokens. 
 
-1. Get all internal transactions (transactions that happen within smart contracts that are not stored on chain) initiated by the OHM staking distributor contract that invoke the `logRebase` or `logSupply` functions of the `sOHM Token Contract`. This provides us with the epoch, index, and rebase reward for all epochs.
+1. Get all internal transactions (transactions that happen within smart contracts that are not stored on chain) initiated by the OHM staking distributor contract that invoke the `logRebase` or `logSupply` functions of the sOHM Token Contract. This provides us with the epoch, index, and rebase reward for all epochs.
     - This information is not available with free API's, so I did some lightweight scraping of the etherscan website to attain relevant transaction hashes. This is technically against their TOS, but the number of HTTP requests to get the data was quite small, and I made sure to cache the data in a postgresql database. I'm looking for a different way to get this information moving forward.
     - I had to lookup transaction receipts for the transactions scraped from etherscan, then I used an infura hosted ETH node to parse these receipts and extract the function call / return data. 
 
@@ -26,10 +26,10 @@ This app tracks OHM, gOHM, sOHM, wsOHM balances. Whenever I say "OHM tokens" I a
 
 3. Compute token balances of OHM tokens over time.
    -  For OHM, gOHM, wsOHM, the balance can be determined simply by using transfer events. 
-   - For sOHM, I combine rebase events with erc20 transfer events. Transfer events are additive (sOHM added or removed from wallet) while rebases are multiplicative (amount of sOHM updated by multiplying by some reward rate). 
+   - For sOHM, I combine rebase events with erc20 transfer events. Transfer events are additive (sOHM added or removed from wallet) while rebases are multiplicative (amount of sOHM updated by multiplying by some reward rate). Rebases occur roughly three times a day. 
 
 4. Get price history for OHM tokens. 
-    - This information is attained bia the coingecko API. 
+    - This information is attained via the coingecko API. 
 
 5. Compute time aligned product of price and holding amount for OHM tokens. 
 
